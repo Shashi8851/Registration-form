@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Weather Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-cloud-sun"></i>
+                <span>WeatherApp</span>
+            </div>
+            <div class="nav-links">
+                <button id="location-btn" title="Get Current Location">
+                    <i class="fas fa-location-dot"></i>
+                </button>
+                <button id="unit-toggle" title="Toggle Temperature Unit">
+                    °C | °F
+                </button>
+                <button id="theme-toggle" title="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1>Weather Application</h1>
+            
+            <!-- Search Section -->
+            <div class="search-section">
+                <div class="input-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="city-input" placeholder="Enter city name" autocomplete="off">
+                    <button id="get-weather-btn">Search</button>
+                </div>
+                <div class="recent-searches">
+                    <h3>Recent Searches</h3>
+                    <div id="recent-searches-list"></div>
+                </div>
+            </div>
+
+            <!-- Loading Indicator -->
+            <div id="loading" class="hidden">
+                <div class="loading"></div>
+            </div>
+
+            <!-- Weather Information -->
+            <div id="weather-info" class="hidden">
+                <h2 id="city-name"></h2>
+                <div class="datetime">
+                    <span id="current-date"></span>
+                    <span id="current-time"></span>
+                </div>
+                
+                <div class="weather-main">
+                    <img id="weather-icon" class="weather-icon" src="download.jpg" alt="Weather icon">
+                    <div class="temperature-container">
+                        <h2 id="temperature"></h2>
+                        <p id="description"></p>
+                    </div>
+                </div>
+
+                <div class="weather-details">
+                    <div class="weather-detail">
+                        <i class="fas fa-temperature-half"></i>
+                        <h3>Feels Like</h3>
+                        <p id="feels-like"></p>
+                    </div>
+                    <div class="weather-detail">
+                        <i class="fas fa-droplet"></i>
+                        <h3>Humidity</h3>
+                        <p id="humidity"></p>
+                    </div>
+                    <div class="weather-detail">
+                        <i class="fas fa-wind"></i>
+                        <h3>Wind Speed</h3>
+                        <p id="wind-speed"></p>
+                    </div>
+                    <div class="weather-detail">
+                        <i class="fas fa-compass"></i>
+                        <h3>Wind Direction</h3>
+                        <p id="wind-direction"></p>
+                    </div>
+                </div>
+
+                <!-- Additional Weather Information -->
+                <div class="additional-info">
+                    <div class="info-item">
+                        <i class="fas fa-sun"></i>
+                        <div>
+                            <h4>Sunrise</h4>
+                            <p id="sunrise"></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-moon"></i>
+                        <div>
+                            <h4>Sunset</h4>
+                            <p id="sunset"></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-gauge-high"></i>
+                        <div>
+                            <h4>Pressure</h4>
+                            <p id="pressure"></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-eye"></i>
+                        <div>
+                            <h4>Visibility</h4>
+                            <p id="visibility"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <p id="error-message" class="hidden">City not found. Please try again.</p>
+
+            <!-- Forecast Section -->
+            <div id="forecast-section" class="hidden">
+                <h3>5-Day Forecast</h3>
+                <div class="forecast-container" id="forecast-container"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About WeatherApp</h3>
+                <p>Get accurate weather information for any city worldwide. Powered by OpenWeather API.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#" id="about-link">About</a></li>
+                    <li><a href="#" id="privacy-link">Privacy Policy</a></li>
+                    <li><a href="#" id="terms-link">Terms of Use</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/home?lang=en" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 WeatherApp. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal Templates -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title"></h2>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
